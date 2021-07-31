@@ -1,1 +1,8 @@
-<div></div>
+<div>
+  <app-todo-item
+   *ngFor="let todo of todos"
+   [todo]="todo"
+   class="todo-item"
+   (completionToggle)="toggleCompletion(todo)"
+  ></app-todo-item>
+</div>

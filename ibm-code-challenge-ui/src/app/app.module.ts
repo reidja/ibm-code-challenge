@@ -19,6 +19,7 @@ import { AddTodoComponent } from './pages/add-todo/add-todo.component';
 import { EditTodoComponent } from './pages/edit-todo/edit-todo.component';
 import { EditTodoDeleteDialogComponent } from './pages/edit-todo/edit-todo-delete-dialog.component';
 import { ShowTodosComponent } from './pages/show-todos/show-todos.component';
+import { TodoItemComponent } from './components/todo-item/todo-item.component';
 
 /** Angular Material component modules */
 const MaterialModules = [
@@ -41,6 +42,7 @@ const MaterialModules = [
     EditTodoComponent,
     EditTodoDeleteDialogComponent,
     ShowTodosComponent,
+    TodoItemComponent
   ],
   imports: [
     BrowserModule,

@@ -44,6 +44,14 @@ export class TodoService {
     return this.http.get<Todo>(`${this.apiUrl}/${id}`);
   }
   
+  /**
+   * Retrieve all todos from the server
+   * @returns A list of todo items
+   */
+  getTodos(): Observable<Todo[]> {
+    return this.http.get<Todo[]>(`${this.apiUrl}`);
+  }
+  
   /** 
    * Update a todo item on the server 
    * @param id The unique id of the todo item

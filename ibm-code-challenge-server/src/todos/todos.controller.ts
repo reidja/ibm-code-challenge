@@ -20,6 +20,11 @@ export class TodosController {
     return await this.todoService.get(id);
   }
 
+  @Get()
+  async list(): Promise<Todo[]> {
+    return await this.todoService.list();
+  }
+
   @Post()
   async create(@Body() createTodoDto: CreateTodoDto): Promise<Todo> {
     return await this.todoService.create(createTodoDto);
