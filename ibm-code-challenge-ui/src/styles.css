@@ -1,0 +1,24 @@
+html, body { 
+  height: 100%;
+}
+
+body { 
+  margin: 0; 
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-display: swap;
+}
+
+/* Global helper which sets an element to use a flex layout */
+.flex {
+  display: flex;
+}
+
+/* Global helper which causes an element to consume all free space in a flex layout */
+.spacer {
+  flex: 1 1 auto;
+}
+
+/* Global helper which forces all material form fields to use flexbox */
+mat-form-field {
+  flex: 1 1 auto;
+}

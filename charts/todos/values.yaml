@@ -1,0 +1,14 @@
+repository: ca.icr.io/interview
+
+server:
+  image: ibm-code-challenge-server
+  replicas: 2
+  
+ui:
+  image: ibm-code-challenge-ui
+  replicas: 2
+  
+domain: jrdemo-c4a24be17d2b0bfc980895fd31267ec3-0000.mon01.containers.appdomain.cloud
+
+nameOverride: ""
+fullnameOverride: ""

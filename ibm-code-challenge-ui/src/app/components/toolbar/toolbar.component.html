@@ -1,0 +1,10 @@
+<mat-toolbar id="app-bar" color="primary">
+  <button mat-button [routerLink]="'/todos'" style="font-size: 18px">
+    <mat-icon [ngStyle]="{'margin-right': '10px'}">fact_check</mat-icon>
+    Todo List
+  </button>
+  <span class="spacer"></span>
+  <button *ngIf="hasRoute('/todos')" [routerLink]="'/todos/add'" mat-raised-button color="accent">
+    <mat-icon>add_circle_outline</mat-icon> New
+  </button>
+</mat-toolbar>
