@@ -1,0 +1,14 @@
+/* Place spacing after the todo item as its displayed in a list */
+.mat-card {
+  margin-bottom: 20px;
+}
+
+/* Strike through the text of completed todo items */
+.mat-card.completed {
+  text-decoration: line-through;
+}
+
+/* Allow the content in the todo item to have white space */
+.mat-card-content p {
+  white-space: pre-wrap;
+}

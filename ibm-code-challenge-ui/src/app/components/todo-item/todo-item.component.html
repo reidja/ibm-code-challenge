@@ -1,0 +1,13 @@
+<mat-card *ngIf="todo" [ngClass]="{'completed': todo.completed}" >
+  <mat-card-title>{{ todo.title }}</mat-card-title>
+  <mat-card-content><p>{{ todo.description }}</p></mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-icon-button color="accent" (click)="onCompletionToggle(todo)">
+      <mat-icon *ngIf="todo.completed">task_alt</mat-icon>
+      <mat-icon  *ngIf="!todo.completed">radio_button_unchecked</mat-icon>
+    </button>
+    <button mat-icon-button color="accent" (click)="onEditClick()">
+      <mat-icon style="font-size: 20px">edit</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
