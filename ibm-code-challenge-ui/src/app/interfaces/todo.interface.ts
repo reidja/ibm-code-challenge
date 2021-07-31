@@ -10,4 +10,7 @@ export interface Todo {
 
   /** Has the todo item been completed? */
   completed: boolean;
+  
+  /** The priority for the todo item */
+  priority: number;
 }

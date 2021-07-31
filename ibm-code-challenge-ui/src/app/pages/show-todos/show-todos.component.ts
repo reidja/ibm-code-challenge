@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Todo } from 'src/app/interfaces/todo';
+import { Todo } from 'src/app/interfaces/todo.interface';
 import { TodoService } from '../../services/todo.service';
 
 @Component({
@@ -21,16 +21,18 @@ export class ShowTodosComponent implements OnInit {
    * @param todo The todo item to toggle completion status
    */
   toggleCompletion(todo: Todo) {
-    todo.completed = !todo.completed;
-    this.todoService.updateTodo((todo as any)._id, todo).subscribe();    
+    this.todoService.toggleTodo((todo as any)._id, todo).subscribe(() => this.loadTodos());
   }
   
-  ngOnInit() {
+  /**
+   * Fetch the todo list
+   */
+  loadTodos() {
     // Get the list of todos on component load
     this.todoService.getTodos().subscribe(
       // Handle successful fetch of the todo list
       (todos) => {
-        this.todos = todos;
+        this.todos = todos
       },
       // Handle server error
       () => {
@@ -40,6 +42,11 @@ export class ShowTodosComponent implements OnInit {
           verticalPosition: 'top',
         });
       }
-    );    
+    );
+  }
+  
+  ngOnInit() {
+    // Get the list of todos on component load
+    this.loadTodos();
   }
 }

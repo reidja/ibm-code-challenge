@@ -1,8 +1,9 @@
-<div>
-  <app-todo-item
-   *ngFor="let todo of todos"
-   [todo]="todo"
-   class="todo-item"
-   (completionToggle)="toggleCompletion(todo)"
-  ></app-todo-item>
+<app-todo-item
+  *ngFor="let todo of todos"
+  [todo]="todo"
+  class="todo-item"
+  (completionToggle)="toggleCompletion(todo)"
+></app-todo-item>
+<div *ngIf="todos.length === 0">
+  <p>You have no todo items!</p>
 </div>

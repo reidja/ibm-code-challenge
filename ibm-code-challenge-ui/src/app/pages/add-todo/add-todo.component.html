@@ -17,6 +17,14 @@
           <mat-error *ngIf="addForm.controls.description.invalid">{{ getDescriptionError() }}</mat-error>
         </mat-form-field>
       </p>
+      <p>
+        <span><mat-label>Priority</mat-label></span><br />
+        <mat-button-toggle-group style="font-size: 15px"  formControlName="priority">
+          <mat-button-toggle value="2">High</mat-button-toggle>
+          <mat-button-toggle value="1">Medium</mat-button-toggle>
+          <mat-button-toggle value="0">Low</mat-button-toggle>
+        </mat-button-toggle-group>
+      </p>
     </mat-card-content>
     <mat-card-actions>
       <button [routerLink]="'/todos'" mat-button color="secondary">Cancel</button>

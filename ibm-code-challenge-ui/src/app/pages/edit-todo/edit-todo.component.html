@@ -18,12 +18,20 @@
         </mat-form-field>
       </p>
       <p>
+        <span><mat-label>Priority</mat-label></span><br />
+        <mat-button-toggle-group formControlName="priority">
+          <mat-button-toggle value="2">High</mat-button-toggle>
+          <mat-button-toggle value="1">Medium</mat-button-toggle>
+          <mat-button-toggle value="0">Low</mat-button-toggle>
+        </mat-button-toggle-group>
+      </p>
+      <p>
         <mat-checkbox formControlName="completed">Completed</mat-checkbox>
       </p>
     </mat-card-content>
     <mat-card-actions>
       <div class="flex" style="align-items: end">
-        <button [routerLink]="'/todos'" mat-button color="secondary">Cancel</button>
+        <button [routerLink]="'/todos'" mat-button color="secondary">Back to list</button>
         <button [disabled]="!editForm.valid" type="submit" mat-raised-button color="primary">Save</button>
         <div class="spacer">
         </div>
