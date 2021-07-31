@@ -5,6 +5,7 @@ export const TodoSchema = new mongoose.Schema({
   description: String,
   completed: Boolean,
   priority: {
-    type: Number, default: '0'
-  }
+    type: Number,
+    default: '0',
+  },
 });
