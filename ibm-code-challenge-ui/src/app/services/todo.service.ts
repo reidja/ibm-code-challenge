@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT, LocationStrategy } from '@angular/common';
 import { Observable } from 'rxjs';
-import { Todo } from '../models/todo';
+import { Todo } from '../interfaces/todo';
 
 @Injectable({
   providedIn: 'root'
@@ -62,4 +62,3 @@ export class TodoService {
     return this.http.delete<Todo>(`${this.apiUrl}/${id}`);
   }
 }
- 
