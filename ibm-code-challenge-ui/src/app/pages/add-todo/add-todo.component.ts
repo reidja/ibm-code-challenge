@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Todo } from '../../interfaces/todo';
+import { Todo } from '../../interfaces/todo.interface';
 import { TodoService } from '../../services/todo.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class AddTodoComponent {
   addForm = new FormGroup({
     title: new FormControl('', [Validators.required]),
+    priority: new FormControl('0', [Validators.required]),
     description: new FormControl('', [Validators.required])
   });
   
@@ -20,6 +21,16 @@ export class AddTodoComponent {
     private snackBar: MatSnackBar,
     private router: Router
   ) {}
+  
+  /**
+   * Get an error string for the priority field
+   */
+   getPriorityError(): string {
+    if(this.addForm.controls.priority.hasError('required')) {
+      return 'You must set a priority'
+    }
+    return '';
+  }
   
   /**
    * Get an error string for the title field
@@ -52,6 +63,7 @@ export class AddTodoComponent {
       title: this.addForm.controls.title.value,
       description: this.addForm.controls.description.value,
       completed: false,
+      priority: Number(this.addForm.controls.priority.value)
     }
     
     // Create a new task on the server
@@ -65,8 +77,8 @@ export class AddTodoComponent {
           duration: 3000, // 3s
         });
         
-        // Redirect the user to the edit page for the new todo item
-        this.router.navigate(['todos', (newTodo as any)._id]);
+        // Redirect the user to the todo list
+        this.router.navigate(['todos']);
       },
       // Handle server errors
       () => {

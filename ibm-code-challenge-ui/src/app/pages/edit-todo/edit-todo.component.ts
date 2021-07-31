@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Todo } from '../../interfaces/todo';
+import { Todo } from '../../interfaces/todo.interface';
 import { TodoService } from '../../services/todo.service';
 import { EditTodoDeleteDialogComponent } from './edit-todo-delete-dialog.component';
 
@@ -20,6 +20,7 @@ export class EditTodoComponent implements OnInit {
   editForm = new FormGroup({
     title: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
+    priority: new FormControl('0', [Validators.required]),
     completed: new FormControl('', [])
   });
   
@@ -52,6 +53,16 @@ export class EditTodoComponent implements OnInit {
   }
   
   /**
+   * Get an error string for the priority field
+   */
+  getPriorityError(): string {
+    if(this.editForm.controls.priority.hasError('required')) {
+      return 'You must set a priority'
+    }
+    return '';
+  }
+  
+  /**
    * Called when saving a todo item
    */
   onSubmit(): void {
@@ -67,7 +78,8 @@ export class EditTodoComponent implements OnInit {
     const todo: Todo = {
       title: this.editForm.controls.title.value,
       description: this.editForm.controls.description.value,
-      completed: this.editForm.controls.completed.value
+      completed: this.editForm.controls.completed.value,
+      priority: this.editForm.controls.priority.value
     }
     
     // Update the todo item on the server
@@ -150,7 +162,8 @@ export class EditTodoComponent implements OnInit {
         this.editForm.setValue({
           title: todo.title,
           description: todo.description,
-          completed: todo.completed
+          completed: todo.completed,
+          priority: `${todo.priority}`
         });
         // Indicate the content is now loaded
         this.loaded = true;

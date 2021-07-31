@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT, LocationStrategy } from '@angular/common';
 import { Observable } from 'rxjs';
-import { Todo } from '../interfaces/todo';
+import { Todo } from '../interfaces/todo.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -59,6 +59,18 @@ export class TodoService {
    */
   updateTodo(id: string, todo: Todo): Observable<Todo> {
     return this.http.put<Todo>(`${this.apiUrl}/${id}`, todo);
+  }
+  
+  /**
+   * Toggle a todo's complete on the server
+   * @param id The unique id of the todo item
+   * @param todo The todo to toggle
+   */
+  toggleTodo(id: string, todo: Todo): Observable<Todo> {
+    return this.updateTodo(id, {
+      ...todo,
+      completed: !todo.completed
+    });
   }
   
   /**

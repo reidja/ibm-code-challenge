@@ -13,9 +13,9 @@ export class TodosService {
   }
 
   async list(): Promise<Todo[]> {
-    return this.todoModel.find().exec();
+    return await this.todoModel.find().sort({ completed: 'asc', priority: 'desc'}).exec();
   }
-
+  
   async create(createTodoDto: CreateTodoDto): Promise<Todo> {
     const createdTodo = new this.todoModel(createTodoDto);
     return createdTodo.save();
