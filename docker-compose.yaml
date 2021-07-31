@@ -1,0 +1,20 @@
+services:
+  server:
+    build: ibm-code-challenge-server/
+    image: $REGISTRY/ibm-code-challenge-server:$APP_VERSION
+    environment:
+      MONGODB_URI: mongodb://dev:dev@mongodb/todos?authSource=admin&readPreference=primary&appname=server&ssl=false
+    ports:
+      - 3000:3000
+  ui:
+    build: ibm-code-challenge-ui/
+    image: $REGISTRY/ibm-code-challenge-ui:$APP_VERSION
+    ports:
+      - 8000:80
+  mongodb:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: dev
+      MONGO_INITDB_ROOT_PASSWORD: dev
+    ports:
+      - 27017:27017

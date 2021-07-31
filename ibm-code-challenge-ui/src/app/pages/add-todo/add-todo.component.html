@@ -1,0 +1,26 @@
+<form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+  <mat-card>
+    <mat-card-title>Add Todo</mat-card-title>
+    <mat-card-subtitle>Please fill out the details of your task below.</mat-card-subtitle>
+    <mat-card-content>
+      <p class="flex">
+        <mat-form-field>
+          <mat-label>Title</mat-label>
+          <input matInput formControlName="title" required />
+          <mat-error *ngIf="addForm.controls.title.invalid">{{ getTitleError() }}</mat-error>
+        </mat-form-field>
+      </p>
+      <p class="flex">
+        <mat-form-field>
+          <mat-label>Description</mat-label>
+          <textarea rows="5" matInput formControlName="description" required></textarea>
+          <mat-error *ngIf="addForm.controls.description.invalid">{{ getDescriptionError() }}</mat-error>
+        </mat-form-field>
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button [routerLink]="'/todos'" mat-button color="secondary">Cancel</button>
+      <button [disabled]="!addForm.valid" type="submit" mat-raised-button color="primary">Create</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
