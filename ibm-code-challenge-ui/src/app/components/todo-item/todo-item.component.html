@@ -1,7 +1,7 @@
 <mat-card *ngIf="todo" [ngClass]="{'completed': todo.completed}">
   <span
     *ngIf="!todo.completed"
-    [ngClass]="{'chip': true, 'medium': todo.priority == 1, 'high': todo.priority == 2 }"
+    [ngClass]="{'chip': true, 'medium': todo.priority === 1, 'high': todo.priority === 2 }"
   >
     {{getPriorityName(todo.priority)}}
   </span>

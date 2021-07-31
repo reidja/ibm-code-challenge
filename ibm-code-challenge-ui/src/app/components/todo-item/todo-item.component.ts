@@ -28,7 +28,6 @@ export class TodoItemComponent {
    * @param priority
    */
   getPriorityName(priority: number) {
-    console.log(priority)
     switch(priority)
     {
       case 0:

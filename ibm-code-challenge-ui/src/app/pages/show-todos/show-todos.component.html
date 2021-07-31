@@ -4,6 +4,6 @@
   class="todo-item"
   (completionToggle)="toggleCompletion(todo)"
 ></app-todo-item>
-<div *ngIf="!todos">
+<div *ngIf="todos.length === 0">
   <p>You have no todo items!</p>
 </div>
