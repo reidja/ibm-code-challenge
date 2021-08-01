@@ -1,4 +1,4 @@
-import { Component, Inject } from "@angular/core";
+import { Component, Inject, OnDestroy } from "@angular/core";
 import { MatDialogRef } from "@angular/material/dialog";
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Todo } from "src/app/interfaces/todo.interface";
@@ -12,7 +12,7 @@ const TIMER_FREQUENCY = 1000; // 1s
   templateUrl: './git-bits-dun-dialog.component.html',
   styleUrls: ['./git-bits-dun-dialog.component.css'],
 })
-export class GitBitsDunDialogComponent {
+export class GitBitsDunDialogComponent implements OnDestroy {
   /** Has the timer started? */
   started: boolean = false;
   
