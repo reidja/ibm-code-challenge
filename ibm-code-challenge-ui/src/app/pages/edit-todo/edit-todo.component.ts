@@ -6,10 +6,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Todo } from '../../interfaces/todo.interface';
 import { TodoService } from '../../services/todo.service';
 import { EditTodoDeleteDialogComponent } from './edit-todo-delete-dialog.component';
+import { enterExitAnimation } from 'src/app/animations/enter-exit';
 
 @Component({
   selector: 'app-edit-todo',
-  templateUrl: './edit-todo.component.html'
+  templateUrl: './edit-todo.component.html',
+  styleUrls: ['./edit-todo.component.css'],
+  animations: [
+    enterExitAnimation,
+  ]
 })
 export class EditTodoComponent implements OnInit {
   /** Is the data from the server loaded? */

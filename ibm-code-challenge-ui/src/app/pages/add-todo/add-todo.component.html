@@ -1,30 +1,29 @@
-<form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+<form @enterExit [formGroup]="addForm" (ngSubmit)="onSubmit()">
   <mat-card>
     <mat-card-title>Add Todo</mat-card-title>
     <mat-card-subtitle>Please fill out the details of your task below.</mat-card-subtitle>
     <mat-card-content>
       <p class="flex">
-        <mat-form-field>
+        <mat-form-field appearance="outline">
           <mat-label>Title</mat-label>
           <input matInput formControlName="title" required />
           <mat-error *ngIf="addForm.controls.title.invalid">{{ getTitleError() }}</mat-error>
         </mat-form-field>
       </p>
       <p class="flex">
-        <mat-form-field>
+        <mat-form-field appearance="outline">
           <mat-label>Description</mat-label>
           <textarea rows="5" matInput formControlName="description" required></textarea>
           <mat-error *ngIf="addForm.controls.description.invalid">{{ getDescriptionError() }}</mat-error>
         </mat-form-field>
       </p>
-      <p>
-        <span><mat-label>Priority</mat-label></span><br />
-        <mat-button-toggle-group style="font-size: 15px"  formControlName="priority">
-          <mat-button-toggle value="2">High</mat-button-toggle>
-          <mat-button-toggle value="1">Medium</mat-button-toggle>
-          <mat-button-toggle value="0">Low</mat-button-toggle>
+      <div class="controls">
+        <mat-button-toggle-group formControlName="priority" appearance="legacy">
+          <mat-button-toggle class="high" value="2">High</mat-button-toggle>
+          <mat-button-toggle class="medium" value="1">Medium</mat-button-toggle>
+          <mat-button-toggle class="low" value="0">Low</mat-button-toggle>
         </mat-button-toggle-group>
-      </p>
+      </div>
     </mat-card-content>
     <mat-card-actions>
       <button [routerLink]="'/todos'" mat-button color="secondary">Cancel</button>

@@ -6,6 +6,7 @@ body {
   margin: 0; 
   font-family: Roboto, "Helvetica Neue", sans-serif;
   font-display: swap;
+  background-color: #303030;
 }
 
 /* Global helper which sets an element to use a flex layout */

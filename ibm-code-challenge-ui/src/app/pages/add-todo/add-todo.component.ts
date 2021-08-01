@@ -4,10 +4,15 @@ import { Todo } from '../../interfaces/todo.interface';
 import { TodoService } from '../../services/todo.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { enterExitAnimation } from 'src/app/animations/enter-exit';
 
 @Component({
   selector: 'app-add-todo',
-  templateUrl: './add-todo.component.html'
+  templateUrl: './add-todo.component.html',
+  styleUrls: ['../edit-todo/edit-todo.component.css'],
+  animations: [
+    enterExitAnimation
+  ]
 })
 export class AddTodoComponent {
   addForm = new FormGroup({

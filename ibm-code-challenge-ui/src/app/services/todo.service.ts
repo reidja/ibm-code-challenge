@@ -20,8 +20,10 @@ export class TodoService {
    * can calculate the correct path to the API.
    */
   get apiUrl(): string {
-    /** URL to the todo API */
+    /** Base path URL */
     const basePath = `${this.document.location.origin}${this.locationStrategy.getBaseHref()}`;
+    
+    /** URL to the todo API */
     const apiPath = 'api/v1/todos';
     return `${basePath}${apiPath}`
   }
@@ -66,11 +68,26 @@ export class TodoService {
    * @param id The unique id of the todo item
    * @param todo The todo to toggle
    */
-  toggleTodo(id: string, todo: Todo): Observable<Todo> {
+  toggleTodo(todo: Todo): Observable<Todo> {
+    const id = (todo as any)._id;
     return this.updateTodo(id, {
       ...todo,
       completed: !todo.completed
     });
+  }
+  
+  /**
+   * Change the priority of a todo
+   * @param id The unique id of the todo item
+   * @param todo The original todo item
+   * @param priority The new priority
+   */
+  changePriority(todo: Todo, priority: number): Observable<Todo> {
+    const id = (todo as any)._id;
+    return this.updateTodo(id, {
+      ...todo,
+      priority
+    })
   }
   
   /**

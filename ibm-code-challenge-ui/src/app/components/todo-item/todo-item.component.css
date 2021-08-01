@@ -13,17 +13,23 @@
   white-space: pre-wrap;
 }
 
-.chip {
-  font-size: 10px;
-  font-weight: bold;
+/* Styling for the priority chip */
+.priority {
+  font-size: 12px;
   border-radius: 5px;
   background-color: lightgray;
-  padding: 2px;
+  padding: 5px;
   padding-left: 5px;
   padding-right: 5px;
   position: absolute;
   right: 10px;
-  top: 10px
+  top: 10px;
+  min-width: 0!important;
+  line-height: 1em;
+}
+
+.low {
+  background-color: limegreen;
 }
 
 .medium {
