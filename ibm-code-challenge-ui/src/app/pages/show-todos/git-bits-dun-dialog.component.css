@@ -1,0 +1,11 @@
+.grow {
+  flex-basis: 50%;
+  flex-grow: 1;
+}
+
+.time {
+  display: flex;
+  align-items: center;
+  font-size: 40px;
+  justify-content:center;
+}

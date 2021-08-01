@@ -14,7 +14,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatMenuModule } from '@angular/material/menu';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
@@ -23,6 +22,7 @@ import { EditTodoComponent } from './pages/edit-todo/edit-todo.component';
 import { EditTodoDeleteDialogComponent } from './pages/edit-todo/edit-todo-delete-dialog.component';
 import { ShowTodosComponent } from './pages/show-todos/show-todos.component';
 import { TodoItemComponent } from './components/todo-item/todo-item.component';
+import { GitBitsDunDialogComponent } from './pages/show-todos/git-bits-dun-dialog.component';
 
 /** Angular Material component modules */
 const MaterialModules = [
@@ -36,7 +36,6 @@ const MaterialModules = [
   MatSnackBarModule,
   MatDialogModule,
   MatButtonToggleModule,
-  MatDividerModule,
   MatMenuModule
 ]
 
@@ -48,7 +47,8 @@ const MaterialModules = [
     EditTodoComponent,
     EditTodoDeleteDialogComponent,
     ShowTodosComponent,
-    TodoItemComponent
+    TodoItemComponent,
+    GitBitsDunDialogComponent
   ],
   imports: [
     BrowserModule,

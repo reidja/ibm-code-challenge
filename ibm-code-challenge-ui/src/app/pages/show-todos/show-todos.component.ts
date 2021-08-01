@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { enterExitAnimation } from 'src/app/animations/enter-exit';
 import { Todo } from 'src/app/interfaces/todo.interface';
 import { TodoService } from '../../services/todo.service';
+import { GitBitsDunDialogComponent } from './git-bits-dun-dialog.component';
 
 @Component({
   selector: 'app-show-todos',
@@ -18,7 +20,8 @@ export class ShowTodosComponent implements OnInit {
   
   constructor(
     private todoService: TodoService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog
   ) {}
   
   /**
@@ -36,6 +39,50 @@ export class ShowTodosComponent implements OnInit {
   changePriority(todoPriority: [Todo, number]) {
     const [todo, priority] = todoPriority;
     this.todoService.changePriority(todo, priority).subscribe(() => this.loadTodos());
+  }
+  
+  /**
+   * Should the Git Bits Dun button be shown?
+   * @param todos List of the todos
+   * @returns Are there at least 5 uncompleted todos?
+   */
+  showGitBitsDun(todos: Todo[]) {
+    return this.getIncompleteTodos(todos).length >= 5;
+  }
+  
+  /**
+   * Get the list of incomplete todos
+   * @param todos The full list of todos
+   * @returns List of incomplete todos
+   */
+  getIncompleteTodos(todos: Todo[]) {
+    return todos.filter((todo: Todo) => !todo.completed)
+  }
+  
+  /**
+   * Called when Gits Bin Dun is selected. Will randomly select an incomplete todo and allow 30 minutes
+   * to complete it
+   */
+  onGitBitsDun(): void {
+    const todos = this.getIncompleteTodos(this.todos);
+    const randomTodo = todos[Math.floor(Math.random() * todos.length)];
+    
+    /** Ref to the dialog */
+    const dialogRef = this.dialog.open(GitBitsDunDialogComponent, {
+      disableClose: true,
+      width: '100%',
+      data: {
+        todo: randomTodo
+      }
+    });
+    
+    // Observe when the result is returned from the closing of the dialog
+    dialogRef.afterClosed().subscribe(finishedTask => {
+      // If the user indicated they finished the task then mark it as complete
+      if(finishedTask) {
+        this.toggleCompletion(randomTodo);
+      }
+    })
   }
   
   /**

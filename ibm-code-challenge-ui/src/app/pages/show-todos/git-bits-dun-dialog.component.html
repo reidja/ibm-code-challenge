@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>Git Bits Dun</h1>
+<div class="flex">
+  <div class="grow" *ngIf="!ended">
+    <p><strong>Title: </strong>{{ data.todo.title }}</p>
+    <p>
+      <strong>Description: </strong><br />
+      {{ data.todo.description }}
+    </p>
+  </div>
+  <div class="grow time" *ngIf="!ended">
+    {{ time }}
+  </div>
+  <div *ngIf="ended" class="grow">
+    <h2 mat-dialog-title>Did you finish?</h2>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="onStart()" *ngIf="!started">Start</button>
+  <button mat-raised-button color="accent" (click)="onClose(false)" *ngIf="!ended">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onClose(true)" *ngIf="ended">Yes :)</button>
+  <button mat-raised-button color="accent" (click)="onClose(false)" *ngIf="ended">No :(</button> 
+</div>
