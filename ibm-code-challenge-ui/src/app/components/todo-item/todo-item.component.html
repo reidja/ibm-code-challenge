@@ -1,19 +1,29 @@
 <mat-card *ngIf="todo" [ngClass]="{'completed': todo.completed}">
-  <span
+  <button mat-button [matMenuTriggerFor]="priorityMenu"
     *ngIf="!todo.completed"
-    [ngClass]="{'chip': true, 'medium': todo.priority === 1, 'high': todo.priority === 2 }"
+    [ngClass]="{
+      'priority': true,
+      'low': todo.priority === 0,
+      'medium': todo.priority === 1,
+      'high': todo.priority === 2
+    }"
   >
     {{getPriorityName(todo.priority)}}
-  </span>
+  </button>
+  <mat-menu #priorityMenu="matMenu">
+    <button mat-menu-item *ngIf="todo.priority !== 2" (click)="onPriorityChange(todo, 2)">High</button>
+    <button mat-menu-item *ngIf="todo.priority !== 1" (click)="onPriorityChange(todo, 1)">Medium</button>
+    <button mat-menu-item *ngIf="todo.priority !== 0" (click)="onPriorityChange(todo, 0)">Low</button>
+  </mat-menu>
   <mat-card-title>{{ todo.title }}</mat-card-title>
   <mat-card-content><p>{{ todo.description }}</p></mat-card-content>
   <mat-card-actions align="end">
-    <button mat-icon-button color="accent" (click)="onCompletionToggle(todo)">
+    <button mat-icon-button color="primary" (click)="onEditClick()">
+      <mat-icon style="font-size: 20px">edit</mat-icon>
+    </button>
+    <button mat-icon-button color="primary" (click)="onCompletionToggle(todo)">
       <mat-icon *ngIf="todo.completed">task_alt</mat-icon>
       <mat-icon *ngIf="!todo.completed">radio_button_unchecked</mat-icon>
-    </button>
-    <button mat-icon-button color="accent" (click)="onEditClick()">
-      <mat-icon style="font-size: 20px">edit</mat-icon>
     </button>
   </mat-card-actions>
 </mat-card>

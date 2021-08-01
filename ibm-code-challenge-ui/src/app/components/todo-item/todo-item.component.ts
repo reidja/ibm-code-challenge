@@ -10,7 +10,9 @@ import { Todo } from '../../interfaces/todo.interface';
 })
 export class TodoItemComponent {
   @Input() todo!: Todo;
-  @Output() completionToggle: EventEmitter<Todo> = new EventEmitter()
+  @Output() completionToggle: EventEmitter<Todo> = new EventEmitter();
+  @Output() priorityChange: EventEmitter<[Todo, number]> = new EventEmitter();
+
   constructor(
     private router: Router,
     private todoService: TodoService
@@ -47,5 +49,14 @@ export class TodoItemComponent {
    */
   onCompletionToggle(todo: Todo) {
     this.completionToggle.emit(todo);
+  }
+  
+  /**
+   * Handler fired when the user changes the priority of an item
+   * @param todo The todo item to change priority on
+   * @praram priority The priority value to set on the todo
+   */
+  onPriorityChange(todo: Todo, priority: number) {
+    this.priorityChange.emit([todo, priority]);
   }
 }

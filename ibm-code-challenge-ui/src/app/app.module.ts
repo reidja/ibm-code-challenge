@@ -16,6 +16,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatMenuModule } from '@angular/material/menu';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { AddTodoComponent } from './pages/add-todo/add-todo.component';
 import { EditTodoComponent } from './pages/edit-todo/edit-todo.component';
@@ -35,7 +36,8 @@ const MaterialModules = [
   MatSnackBarModule,
   MatDialogModule,
   MatButtonToggleModule,
-  MatDividerModule
+  MatDividerModule,
+  MatMenuModule
 ]
 
 @NgModule({

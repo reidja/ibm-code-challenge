@@ -1,9 +1,12 @@
+<div @enterExit>
 <app-todo-item
   *ngFor="let todo of todos"
   [todo]="todo"
   class="todo-item"
   (completionToggle)="toggleCompletion(todo)"
+  (priorityChange)="changePriority($event)"
 ></app-todo-item>
-<div *ngIf="todos.length === 0">
+</div>
+<div @enterExit *ngIf="todos.length === 0 && loaded">
   <p>You have no todo items!</p>
 </div>
